@@ -17,7 +17,13 @@ const Navbar = () => {
     <li><Link to="/about">About</Link></li>
     <li><Link to="/purchase">Purchase</Link></li>
     <li><Link to="/blogs">Blogs</Link></li>
+    {user && <li><Link to="/dashboard">Dashboard</Link></li>}
     <li><Link to="/contact">Contact</Link></li>
+    { user && <li>
+        
+        <p className='text-green-500'>{user?.displayName?.slice(0, 2)} <img className='w-12 rounded-full' src="https://i.ibb.co/k9T3tDW/lash.jpg" alt='' /></p>
+    
+    </li>}
     { user ? <li><button onClick={logoutUser}>Signout</button></li> : <li><Link to="/login">Login</Link></li>}
     </>
     );

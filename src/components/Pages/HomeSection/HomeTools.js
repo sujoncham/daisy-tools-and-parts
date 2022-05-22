@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 const HomeTools = () => {
     const navigate = useNavigate();
   const [tools, setTools] = useState([]);
+
+  const newTools = tools.slice(-6)
+
   useEffect(() => {
-    fetch("daisyTools.json")
+    fetch("http://localhost:5000/products/")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
@@ -15,11 +18,11 @@ const HomeTools = () => {
   }
 
   return (
-    <div>
-      <h1>Home Tools : {tools.length}</h1>
+    <div className="mt-20 mb-20">
+      <h1 className="text-3xl text-center">Our Latest Products tools</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
-        {tools.map((tool) => (
-          <div key={tool.id} tool={tool} className="card w-96 bg-base-100 shadow-xl">
+        {newTools.map((tool) => (
+          <div key={tool._id} tool={tool} className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
               <img src={tool.img} alt="" />
               <h2 className="card-title">{tool.name}</h2>

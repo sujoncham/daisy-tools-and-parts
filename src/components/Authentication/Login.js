@@ -1,6 +1,8 @@
-import React from "react";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link } from "react-router-dom";
+
+import React, { useEffect } from "react";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../Firebase/Firebase.init";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -11,30 +13,43 @@ const myStyle ={
 }
 
 const Login = () => {
-
+ 
   const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
-  if (error || gError) {
-    return <p>Error: {error?.message}</p>
+  useEffect(()=>{
+    if (user || gUser) {
+      navigate(from, { replace: true }); 
+    }
+  
+  }, [from, user, navigate, gUser]);
+
+  if (error || gError || resetError) {
+    return <p>Error: {error?.message} {gError?.message} {resetError?.message}</p>
   }
-  if (loading || gLoading) {
+
+  if (loading || gLoading || sending) {
     return <LoadingSpinner></LoadingSpinner>
   }
-  if (user || gUser) {
-   console.log(user);
-      
-  }
 
-  const handleFormLogin =(event)=>{
+  const handleFormLogin = (event) =>{
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log('submitted form', email, password);
-
-
+  
     signInWithEmailAndPassword(email, password);
 
+  }
+
+  const passwordReset = async (event) =>{
+    const email = event.target.value;
+        await sendPasswordResetEmail(email);
+          toast('Sent email');
+    
   }
 
 
@@ -67,6 +82,8 @@ const Login = () => {
           </div>
           <button className="btn btn-success mt-10">Login</button>
         </form>
+        <p>Forgot Password? <button className="text-green-500" onClick={passwordReset} >Reset password</button> </p>
+
         <p>New at Daisy Tools? Please, <Link to='/register' className="text-primary">Create account</Link> here</p>
         <div className="divider">OR</div>
         <div className="text-center">

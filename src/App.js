@@ -10,6 +10,11 @@ import Navbar from './components/Navbar/Navbar';
 import About from './components/Pages/About';
 import Blogs from './components/Pages/Blogs';
 import Contact from './components/Pages/Contact';
+import AddReview from './components/Pages/Dashboard/AddReview';
+import Dashboard from './components/Pages/Dashboard/Dashboard';
+import MyOrders from './components/Pages/Dashboard/MyOrders';
+import MyProducts from './components/Pages/Dashboard/MyProducts';
+import MyProfile from './components/Pages/Dashboard/MyProfile';
 import Home from './components/Pages/Home';
 import Purchase from './components/Pages/Purchase';
 
@@ -26,6 +31,16 @@ function App() {
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/dashboard' element={
+        <RequireAuth>
+          <Dashboard></Dashboard>
+          </RequireAuth>
+        }>
+          <Route index element={<MyProducts></MyProducts>}></Route>
+          <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='addReview' element={<AddReview></AddReview>}></Route>
+        </Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />
