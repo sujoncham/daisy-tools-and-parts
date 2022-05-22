@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import auth from "../Firebase/Firebase.init";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
+const myStyle ={
+  width:'35px',
+  height:'35px',
+  marginRight: '10px'
+}
+
 const Login = () => {
 
   const [ signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
@@ -64,7 +70,7 @@ const Login = () => {
         <p>New at Daisy Tools? Please, <Link to='/register' className="text-primary">Create account</Link> here</p>
         <div className="divider">OR</div>
         <div className="text-center">
-            <button onClick={() => signInWithGoogle()}className="btn btn-success">sign in with google</button>
+            <button onClick={() => signInWithGoogle()}className="btn btn-success"><img style={myStyle} src="https://i.ibb.co/TL9tBnZ/google.png" alt="" /> sign in with google</button>
         </div>
       </div>
     </div>
