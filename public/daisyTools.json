@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Hammer",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/5nYzfgF/hammer.jpg"
+  },
+  {
+    "id": 2,
+    "name": "pliers",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/Xk2Gs1y/pliers.jpg"
+  },
+  {
+    "id": 3,
+    "name": "hacksaw",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/XZbnDYW/hacksaw.jpg"
+  },
+  {
+    "id": 4,
+    "name": "measuring-tape",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/s6swHhr/measuring-tape.jpg"
+  },
+  {
+    "id": 5,
+    "name": "electric-saw",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/c69pJ5F/electric-saw.jpg"
+  },
+  {
+    "id": 6,
+    "name": "nail-gun",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/2N0J5W6/nail-gun.jpg"
+  },
+  {
+    "id": 7,
+    "name": "drill-machine",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/GnprgjW/drill-machine.jpg"
+  },
+  {
+    "id": 8,
+    "name": "chisel",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/Y8nt3sb/chisel.jpg"
+  },
+  {
+    "id": 9,
+    "name": "wrench",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/8bRhZhF/wrench.jpg"
+  },
+  {
+    "id": 10,
+    "name": "screwdriver",
+    "price": 120,
+    "quantity": 120,
+    "description": "this is a hammer and it is very powerful tools",
+    "img": "https://i.ibb.co/j4nZNjy/screwdriver.jpg"
+  }
+]
