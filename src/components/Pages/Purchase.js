@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+
 import React, { useEffect, useState } from "react";
 import "react-day-picker/dist/style.css";
 import PurchaseModal from "./PurchaseModal/PurchaseModal";
@@ -8,7 +8,7 @@ const Purchase = () => {
     const [date, setDate] = useState(new Date());
     const [tools, setTools] = useState([]);
 
-    const formatDate = format(date, 'PP');
+    
 
   useEffect(() => {
     fetch("http://localhost:5000/products/")
@@ -28,12 +28,11 @@ const Purchase = () => {
               <p>Price : {tool.price}</p>
               <p>Quantity: {tool.quantity}</p>
               <label onClick={()=>setPurchase(tool)}  htmlFor="purchase-modal" className="btn btn-primary w-56"> Purchase</label>
-             
             </div>
           </div>
         ))}
       </div>
-      {purchase && <PurchaseModal purchase={purchase} setPurchase={setPurchase} formatDate={formatDate}></PurchaseModal>}
+      {purchase && <PurchaseModal date={date} setDate={setDate} purchase={purchase} setPurchase={setPurchase} ></PurchaseModal>}
       
     </div>
   );

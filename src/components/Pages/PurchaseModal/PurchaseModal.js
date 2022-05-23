@@ -1,6 +1,10 @@
+import { format } from "date-fns";
 import React from 'react';
 
-const PurchaseModal = ({formatDate, setPurchase, purchase}) => {
+const PurchaseModal = ({date, setDate, setPurchase, purchase}) => {
+
+  const formatDate = format(date, 'PP');
+
     return (
         <div>
 

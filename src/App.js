@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 import About from './components/Pages/About';
 import Blogs from './components/Pages/Blogs';
 import Contact from './components/Pages/Contact';
+import AddProducts from './components/Pages/Dashboard/AddProducts';
 import AddReview from './components/Pages/Dashboard/AddReview';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
@@ -40,6 +41,7 @@ function App() {
           <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
           <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
+          <Route path='addProducts' element={<AddProducts></AddProducts>}></Route>
         </Route>
       </Routes>
       <Footer></Footer>
