@@ -1,8 +1,9 @@
 import React from "react";
 import banner from '../../../assets/images/banner.png';
 
+
 const myStyle = {
-  backgroundImage:`${banner}`,
+  backgroundImage:`url(${banner})`,
   backgroundSize: 'cover',
   backgroundPosition:'center',
   backgroundRepeat: 'no-repeat',

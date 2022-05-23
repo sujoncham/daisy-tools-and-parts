@@ -10,12 +10,7 @@ const Dashboard = () => {
           <h1 className="text-4xl text-primary text-bold">
             Wecome to Dashboard
           </h1>
-          <label
-            htmlFor="dashboard-drawer"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
+         
           <Outlet></Outlet>
         </div>
         <div className="drawer-side">
@@ -31,7 +26,7 @@ const Dashboard = () => {
               <Link to="/dashboard/myProfile">My Profile</Link>
             </li>
             <li>
-              <Link to="/dashboard/addReview"> Add Review</Link>
+              <Link to="/dashboard/reviewList">Review List</Link>
             </li>
             <li>
               <Link to="/dashboard/addProducts"> Add Products</Link>
