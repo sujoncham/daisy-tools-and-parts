@@ -1,5 +1,6 @@
 import React from "react";
 import banner from '../../../assets/images/banner.png';
+import StarRating from "../../StarRating/StarRating";
 
 
 const myStyle = {
@@ -14,6 +15,7 @@ const Banner = () => {
   return (
     <div style={myStyle}>
       <h1>Banner</h1>
+      <StarRating></StarRating>
     </div>
   );
 };

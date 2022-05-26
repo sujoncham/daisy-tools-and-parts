@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { FaStar } from 'react-icons/fa';
 import { toast } from "react-toastify";
 import auth from '../Firebase/Firebase.init';
+import '../StarRating/StarRating.css';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
+    const [rating, setRating] = useState(null);
     
   const imageStoreKey = "0a88ddefc27d62bd7063e3b8adb8b307";
 
@@ -29,6 +32,7 @@ const AddReview = () => {
             name: data.name,
             description: data.description,
             img: img,
+            rating:rating
           };
 
           fetch("http://localhost:5000/reviews", {
@@ -107,6 +111,29 @@ const AddReview = () => {
               {errors.image?.type === "required" && <span className="text-red-500">{errors.image?.message}</span>}
           
             </div>
+
+            <div className='flex justify-start items-center mt-5 mb-5'>
+                  <h1>Ratings : </h1>
+            <div className='flex justify-start m-4'>
+            {[...Array(5)].map((star, i)=>{
+                const ratingValue = i + 1;
+                return <label key={i} star={star}>
+                    <input 
+                    type="radio"
+                    name='rating' 
+                    value={ratingValue}
+                    onClick={()=>setRating(ratingValue)} 
+                    />
+                    
+                    <FaStar size={25} i={i}
+                    color={ratingValue <= rating ? '#ffc107': '#e4e5e9'} 
+                    onClick={()=>setRating(null)}
+                    />
+                </label>
+            })}
+            </div>
+            
+        </div>
 
 
             <div className="form-control mt-6 w-full max-w-xs">

@@ -49,7 +49,6 @@ const Login = () => {
     const email = event.target.value;
         await sendPasswordResetEmail(email);
           toast('Sent email');
-    
   }
 
 
@@ -80,14 +79,14 @@ const Login = () => {
               className="input input-bordered"
             />
           </div>
-          <button className="btn btn-success mt-10">Login</button>
+          <button className="btn btn-success w-96 mt-10">Login</button>
         </form>
-        <p>Forgot Password? <button className="text-green-500" onClick={passwordReset} >Reset password</button> </p>
+        <p className="mb-10">Forgot Password? <button className="text-green-500" onClick={passwordReset} >Reset password</button> </p>
 
         <p>New at Daisy Tools? Please, <Link to='/register' className="text-primary">Create account</Link> here</p>
         <div className="divider">OR</div>
         <div className="text-center">
-            <button onClick={() => signInWithGoogle()}className="btn btn-success"><img style={myStyle} src="https://i.ibb.co/TL9tBnZ/google.png" alt="" /> sign in with google</button>
+            <button onClick={() => signInWithGoogle()}className="btn btn-success w-96"><img style={myStyle} src="https://i.ibb.co/TL9tBnZ/google.png" alt="" /> sign in with google</button>
         </div>
       </div>
     </div>

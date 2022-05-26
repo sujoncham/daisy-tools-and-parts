@@ -12,14 +12,18 @@ import AddReview from './components/Pages/AddReview';
 import Blogs from './components/Pages/Blogs';
 import Contact from './components/Pages/Contact';
 import AddProducts from './components/Pages/Dashboard/AddProducts';
+import AddProfile from './components/Pages/Dashboard/AddProfile';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
+import Dashboard404 from './components/Pages/Dashboard/Dashboard404';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProducts from './components/Pages/Dashboard/MyProducts';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
+import ProfileEdit from './components/Pages/Dashboard/ProfileEdit';
 import ReviewList from './components/Pages/Dashboard/ReviewList';
 import Home from './components/Pages/Home';
 import Page404 from './components/Pages/Page404';
 import Purchase from './components/Pages/Purchase';
+import PurchaseModal from './components/Pages/PurchaseModal/PurchaseModal';
 
 
 
@@ -34,6 +38,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/purchase' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+        <Route path='/purchase/:purchaseId' element={<RequireAuth><PurchaseModal></PurchaseModal></RequireAuth>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
@@ -50,6 +55,9 @@ function App() {
           <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
           <Route path='reviewList' element={<ReviewList></ReviewList>}></Route>
           <Route path='addProducts' element={<AddProducts></AddProducts>}></Route>
+          <Route path='addProfile' element={<AddProfile></AddProfile>}></Route>
+          <Route path='profileEdit/:profileEdit' element={<ProfileEdit></ProfileEdit>}></Route>
+          <Route path='*' element={<Dashboard404></Dashboard404>}></Route>
         </Route>
       </Routes>
       <Footer></Footer>

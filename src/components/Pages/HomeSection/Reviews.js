@@ -23,6 +23,7 @@ const Reviews = () => {
               <div className="text-start">
               <p>{review.description}</p>
               <h2 className="card-title">{review.name}</h2>
+              <p>Rating: {review.rating}</p>
               </div>
             </div>
           </div>

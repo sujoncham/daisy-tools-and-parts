@@ -4,7 +4,8 @@ import {
   useSignInWithGoogle,
   useUpdateProfile
 } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 import auth from "../Firebase/Firebase.init";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -19,6 +20,12 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating, pError] = useUpdateProfile(auth);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [token] = useToken(user || gUser)
+
+  let from = location.state?.from?.pathname || "/";
 
   if (error || gError || pError) {
     return <p>Error: {error?.message}</p>;
@@ -26,8 +33,8 @@ const Register = () => {
   if (loading || gLoading || updating) {
     return <LoadingSpinner></LoadingSpinner>;
   }
-  if (user || gUser) {
-    console.log(user);
+  if (token) {
+    navigate(from, { replace: true }); 
   }
 
   const handleFormRegister = async (event) => {
@@ -80,7 +87,7 @@ const Register = () => {
               className="input input-bordered"
             />
           </div>
-          <button className="btn btn-success mt-10">Register</button>
+          <button className="btn btn-success w-96 mt-10 mb-10">Register</button>
         </form>
         <p>
           New at Daisy Tools? Please,{" "}
@@ -93,7 +100,7 @@ const Register = () => {
         <div className="text-center">
           <button
             onClick={() => signInWithGoogle()}
-            className="btn btn-success"
+            className="btn btn-success w-96"
           >
             <img
               style={myStyle}

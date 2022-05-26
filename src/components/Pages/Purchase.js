@@ -1,18 +1,23 @@
 
-import React, { useState } from "react";
-import "react-day-picker/dist/style.css";
+import React from "react";
 import { useQuery } from 'react-query';
+import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import PurchaseModal from "./PurchaseModal/PurchaseModal";
+
 
 const Purchase = () => {
-    const [purchase, setPurchase] = useState(null);
-    const [date, setDate] = useState(new Date());
+  
+    const navigate = useNavigate()
     
 
     const {data:tools, isLoading} = useQuery('tools', ()=>fetch('http://localhost:5000/products').then(res=>res.json()));
     if(isLoading){
         return <LoadingSpinner></LoadingSpinner>
+    }
+
+
+    const handlePurchase = (id) =>{
+        navigate(`/purchase/${id}`);
     }
 
   
@@ -34,13 +39,13 @@ const Purchase = () => {
               <span className="text-red-500 text-bold">piece not available!!</span>}
               </p>
               <div className="flex justify-center">
-              <label onClick={()=>setPurchase(tool)} disabled={tool.quantity === 0} htmlFor="purchase-modal" className="btn btn-primary w-56"> Purchase</label>
+              <label onClick={()=>handlePurchase(tool._id)} disabled={tool.quantity === 0} htmlFor="purchase-modal" className="btn btn-primary w-56"> Purchase</label>
               </div>
             </div>
           </div>
         ))}
       </div>
-      {purchase && <PurchaseModal date={date} setDate={setDate} purchase={purchase} setPurchase={setPurchase} ></PurchaseModal>}
+      
       
     </div>
   );
