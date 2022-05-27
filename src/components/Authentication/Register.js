@@ -4,7 +4,7 @@ import {
   useSignInWithGoogle,
   useUpdateProfile
 } from "react-firebase-hooks/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
 import auth from "../Firebase/Firebase.init";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
@@ -20,12 +20,16 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating, pError] = useUpdateProfile(auth);
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate();
 
   const [token] = useToken(user || gUser)
 
-  let from = location.state?.from?.pathname || "/";
+  // let from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate('/'); 
+  }
 
   if (error || gError || pError) {
     return <p>Error: {error?.message}</p>;
@@ -33,9 +37,7 @@ const Register = () => {
   if (loading || gLoading || updating) {
     return <LoadingSpinner></LoadingSpinner>;
   }
-  if (token) {
-    navigate(from, { replace: true }); 
-  }
+ 
 
   const handleFormRegister = async (event) => {
     event.preventDefault();

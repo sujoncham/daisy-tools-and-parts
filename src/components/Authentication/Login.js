@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useToken from "../../hooks/useToken";
 import auth from "../Firebase/Firebase.init";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -19,14 +20,17 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [token] = useToken(user || gUser);
+
   let from = location.state?.from?.pathname || "/";
 
   useEffect(()=>{
-    if (user || gUser) {
+    if (token) {
       navigate(from, { replace: true }); 
     }
   
-  }, [from, user, navigate, gUser]);
+  }, [token, navigate, from]);
 
   if (error || gError || resetError) {
     return <p>Error: {error?.message} {gError?.message} {resetError?.message}</p>
