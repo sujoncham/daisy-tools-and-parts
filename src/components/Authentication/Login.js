@@ -70,6 +70,7 @@ const Login = () => {
               name="email"
               placeholder="email here"
               className="input input-bordered"
+              required
             />
           </div>
           <div className="form-control mt-5">
@@ -81,6 +82,7 @@ const Login = () => {
               name="password"
               placeholder="Password here"
               className="input input-bordered"
+              required
             />
           </div>
           <button className="btn btn-success w-96 mt-10">Login</button>

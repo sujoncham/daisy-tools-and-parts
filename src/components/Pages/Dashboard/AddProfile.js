@@ -74,14 +74,14 @@ const AddProfile = () => {
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
-              <input type="text" value={user?.displayName} className="input input-bordered" />
+              <input type="text" value={user?.displayName} className="input input-bordered" readOnly disabled />
              
             </div>
             <div className="form-control max-w-xs">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="text" value={user?.email} className="input input-bordered" />
+              <input type="text" value={user?.email} className="input input-bordered" readOnly disabled />
              
             </div>
             <div className="form-control max-w-xs">

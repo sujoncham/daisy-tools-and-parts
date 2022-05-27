@@ -22,9 +22,11 @@ const MyOrders = () => {
             localStorage.removeItem('accessToken');
             navigate('/');
           }
-         return res.json()
+         return res.json();
         })
-        .then((data) => setOrders(data));
+        .then((data) =>{ 
+          setOrders(data)
+        });
     }, [user, navigate]);
 
 

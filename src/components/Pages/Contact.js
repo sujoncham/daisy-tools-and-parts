@@ -1,36 +1,71 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+
+  const contactForm = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const subject = event.target.subject.value;
+    const opinion = event.target.opinion.value;
+          const contactEmail = {
+            name,
+            email,
+            subject,
+            opinion,
+          };
+
+          fetch("http://localhost:5000/inbox", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(contactEmail),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast("added successfully");
+              event.target.reset();
+              }
+            });
+        }
+
+
   return (
-    <div class="hero min-h-screen bg-base-200">
-  <div class="flex flex-col-2 items-center justify-center mt-12 mb-12">
-    <div class="text-center w-96">
-      <h1 class="text-5xl font-bold">Login now!</h1>
-      <p class="py-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <div className="hero min-h-screen bg-base-200">
+  <div className="flex flex-col-2 items-center justify-center mt-12 mb-12">
+    <div className="text-center w-96">
+      <h1 className="text-5xl font-bold">Login now!</h1>
+      <p className="py-2">Provident cupiditate voluptatem et in. 
+      Quaerat fugiat ut assumenda excepturi exercitationem quasi.
+      In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
-    <div class="card w-96 shadow-2xl bg-base-100">
-      <div class="card-body">
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Name</span>
+    <div className="card w-96 shadow-2xl bg-base-100">
+        <form onSubmit={contactForm}>
+        <div className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
           </label>
-          <input type="text" placeholder="enter name" class="input input-bordered" />
+          <input type="text" name="name" placeholder="enter name" className="input input-bordered" />
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Email</span>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" class="input input-bordered" />
+          <input type="email" name='email' placeholder="email" className="input input-bordered" />
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Subject</span>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Subject</span>
           </label>
-          <input type="text" placeholder="enter subject" class="input input-bordered" />
+          <input type="text" name="subject" placeholder="enter subject" className="input input-bordered" />
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Your Opinion</span>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Your Opinion</span>
           </label>
           <textarea 
               type="text"
@@ -39,10 +74,11 @@ const Contact = () => {
                placeholder="description"></textarea>
       
         </div>
-        <div class="form-control mt-6">
-          <button class="btn btn-primary">Submit</button>
+        <div className="form-control mt-6">
+          <button className="btn btn-primary">Submit</button>
         </div>
       </div>
+        </form>
     </div>
   </div>
 </div>

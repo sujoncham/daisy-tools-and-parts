@@ -1,10 +1,16 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import UserRow from './UserRow';
 
 const AllUsers = () => {
    
-    const { data:allUsers, isLoading} = useQuery('users', ()=>fetch('http://localhost:5000/users').then(res =>res.json()));
+    const { data:allUsers, isLoading, refetch} = useQuery('users', ()=>fetch('http://localhost:5000/users', {
+        method: 'GET',
+        headers:{
+            authorization : `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res =>res.json()));
 
     if(isLoading){
         return <LoadingSpinner></LoadingSpinner>
@@ -13,7 +19,7 @@ const AllUsers = () => {
 
     return (
         <div>
-      <h1 className="text-3xl mt-10">Manage Products</h1>
+      <h1 className="text-3xl mt-10">All Users</h1>
       <div className="overflow-y-auto">
         <table className="table w-full">
           <thead>
@@ -26,17 +32,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {
-                allUsers.map((user, index) => <tr index={index} key={user._id} user={user}>
-                    <th>{index + 1}</th>
-                    <td>{user.email}</td>
-                    <td>
-                        <button className='btn btn-sm'>admin</button>
-                    </td>
-              
-                    <td>
-                        <button className="btn btn-sm">Delete</button>
-                    </td>
-                  </tr>)
+                allUsers?.map((user, index) => <UserRow index={index} key={user._id} user={user} refetch={refetch}></UserRow>)
             }
           </tbody>
         </table>

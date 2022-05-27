@@ -8,9 +8,9 @@ const [rating, setRating] = useState(null);
 
     return (
         <div className='flex'>
-            {[...Array(5)].map((star, i)=>{
+            {[...Array(5)].map((star, i, index)=>{
                 const ratingValue = i + 1;
-                return <label>
+                return <label index={index}>
                     <input 
                     type="radio"
                     name='rating' 

@@ -16,6 +16,7 @@ import AddProfile from './components/Pages/Dashboard/AddProfile';
 import AllUsers from './components/Pages/Dashboard/AllUsers';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import Dashboard404 from './components/Pages/Dashboard/Dashboard404';
+import Message from './components/Pages/Dashboard/Message';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProducts from './components/Pages/Dashboard/MyProducts';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
@@ -59,6 +60,7 @@ function App() {
           <Route path='addProfile' element={<AddProfile></AddProfile>}></Route>
           <Route path='profileEdit/:profileEdit' element={<ProfileEdit></ProfileEdit>}></Route>
           <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='message' element={<Message></Message>}></Route>
           <Route path='*' element={<Dashboard404></Dashboard404>}></Route>
         </Route>
       </Routes>
