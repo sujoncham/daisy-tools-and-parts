@@ -13,6 +13,7 @@ import Blogs from './components/Pages/Blogs';
 import Contact from './components/Pages/Contact';
 import AddProducts from './components/Pages/Dashboard/AddProducts';
 import AddProfile from './components/Pages/Dashboard/AddProfile';
+import AllUsers from './components/Pages/Dashboard/AllUsers';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import Dashboard404 from './components/Pages/Dashboard/Dashboard404';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
@@ -57,6 +58,7 @@ function App() {
           <Route path='addProducts' element={<AddProducts></AddProducts>}></Route>
           <Route path='addProfile' element={<AddProfile></AddProfile>}></Route>
           <Route path='profileEdit/:profileEdit' element={<ProfileEdit></ProfileEdit>}></Route>
+          <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
           <Route path='*' element={<Dashboard404></Dashboard404>}></Route>
         </Route>
       </Routes>

@@ -8,7 +8,6 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 const Purchase = () => {
   
     const navigate = useNavigate()
-    
 
     const {data:tools, isLoading} = useQuery('tools', ()=>fetch('http://localhost:5000/products').then(res=>res.json()));
     if(isLoading){

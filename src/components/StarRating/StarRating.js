@@ -17,7 +17,7 @@ const [rating, setRating] = useState(null);
                     value={ratingValue}
                     onClick={()=>setRating(ratingValue)} 
                     />
-                    <FaStar size={100} color={ratingValue <= rating ? '#ffc107': '#e4e5e9'} />
+                    <FaStar i={i} size={100} color={ratingValue <= rating ? '#ffc107': '#e4e5e9'} />
                 </label>
             })}
             

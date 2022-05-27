@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import auth from "../../Firebase/Firebase.init";
 
 const MyProducts = () => {
-  const [user] = useAuthState(auth)
-    const [tools, setTools] = useState([]);
-    const navigate = useNavigate();
+  const [tools, setTools] = useState([]);
+    
   
     useEffect(() => {
-      fetch(`http://localhost:5000/products?customer=${user.email}`, {
-        method:'GET', 
-        headers:{
-          'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-        }
-      })
-        .then((res) => {
-          if(res.status === 401 || res.status === 403){
-            navigate('/');
-          }
-         return res.json()}
-          )
+      fetch('http://localhost:5000/products')
+        .then((res) => res.json())
         .then((data) => {
           setTools(data)
         });
-    }, [user]);
+    }, []);
 
 
   return (
