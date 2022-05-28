@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RowOrder = ({ order, index, setDeletingOrder }) => {
-  const {_id, date, customer, name, price, purchaseValue } = order;
+  const {date, customer, name, price, purchaseValue } = order;
   return (
     <tr>
       <th>{index + 1}</th>
@@ -12,10 +12,11 @@ const RowOrder = ({ order, index, setDeletingOrder }) => {
       <td>${price*purchaseValue}</td>
       <td>{purchaseValue}</td>
       <td>
-        {(order.price || !order.paid) && <Link to={`/dashboard/payment/${_id}`}>
-          <button className="btn btn-sm btn-warning">Pay</button>
-          </Link>}
-        {(order.price && order.paid) && <span className="btn btn-sm btn-success">Paid</span>}
+      {(order.price && !order.paid) && <Link className="btn btn-primary" to={`/dashboard/payment/${order._id}`}>Pay</Link>}
+        {(order.price && order.paid) && <>
+          <p className="text-success">paid</p>
+          <p className="text-success">({order.transactionId.slice(-4)})</p>
+        </>}
       </td>
       <td>
         <label

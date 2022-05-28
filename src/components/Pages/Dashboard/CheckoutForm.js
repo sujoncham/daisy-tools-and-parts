@@ -10,7 +10,7 @@ const CheckoutForm = ({purchase}) => {
   const [clientSecret, setClientSecret] = useState('');
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('');
-  const { _id, price, patient, patientName} = purchase;
+  const { _id, price, customer, customerName} = purchase;
 
   useEffect(()=>{
     fetch('http://localhost:5000/create-payment-intent', {
@@ -53,8 +53,8 @@ const CheckoutForm = ({purchase}) => {
          payment_method:{
            card:card,
            billing_details:{
-            name:patientName, 
-            email:patient,
+            name:customerName, 
+            email:customer,
            }
          }
        });
@@ -72,7 +72,7 @@ const CheckoutForm = ({purchase}) => {
 
         // 
         const payment = {
-          appointment: _id, 
+          order: _id, 
           transactionId: paymentIntent.id,
         }
         
