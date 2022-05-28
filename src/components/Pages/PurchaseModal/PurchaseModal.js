@@ -34,7 +34,8 @@ const PurchaseModal = () => {
     const purchaseData = {
       toolId: purchase._id,
       date:formatDate,
-      productName: purchase.productName,
+      name: purchase.name,
+      price: purchase.price,
       purchaseValue, 
       phone, 
       address,

@@ -37,10 +37,8 @@ const Contact = () => {
     <div className="hero min-h-screen bg-base-200">
   <div className="flex flex-col-2 items-center justify-center mt-12 mb-12">
     <div className="text-center w-96">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-2">Provident cupiditate voluptatem et in. 
-      Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-      In deleniti eaque aut repudiandae et a id nisi.</p>
+      <h1 className="text-5xl font-bold">Contact with us</h1>
+      <p className="py-2">We are highly recommend to contact us directly. Tell us your details and if it is possible to come and with talk us.</p>
     </div>
     <div className="card w-96 shadow-2xl bg-base-100">
         <form onSubmit={contactForm}>

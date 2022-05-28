@@ -10,7 +10,14 @@ const Reviews = () => {
 
   return (
     <div className="mb-20">
-      <h1 className="text-3xl text-center mt-16 mb-16">Client Reviews</h1>
+      <h1 className="text-3xl text-center mt-16 mb-8">Client Reviews</h1>
+      <div className="divider w-56 m-auto mt-1 mb-10">
+          <div className="stat-figure text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+              </svg>
+              </div>
+          </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
         {reviews.map((review) => (
           <div

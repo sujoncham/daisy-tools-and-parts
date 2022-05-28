@@ -20,6 +20,7 @@ const ReviewList = () => {
                             <th>#</th>
                             <th>Name</th>
                             <th>Reviews</th>
+                            <th>Rating</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,6 +30,7 @@ const ReviewList = () => {
                         <th>{index +1}</th>
                         <td>{review.name}</td>
                         <td>{review.description.slice(0, 35)}</td>
+                        <td>{review.rating}</td>
                         <td><button className='btn btn-sm'>Delete</button> </td>
                     </tr>)
                    }

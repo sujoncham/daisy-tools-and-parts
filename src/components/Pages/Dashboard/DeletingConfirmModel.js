@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const DeletingConfirmModel = ({deletingOrder, setDeletingOrder, refetch}) => {
-    const {_id, productName} = deletingOrder;
+    const {_id, name} = deletingOrder;
 
 
     const orderDelete = () => {
@@ -16,7 +16,7 @@ const DeletingConfirmModel = ({deletingOrder, setDeletingOrder, refetch}) => {
           .then((result) => {
               console.log(result);
             if (result.deletedCount) {
-              toast.success(`Order: ${productName} is delete`);
+              toast.success(`Order: ${name} is delete`);
               setDeletingOrder(null)
               refetch();
             }
@@ -31,7 +31,7 @@ const DeletingConfirmModel = ({deletingOrder, setDeletingOrder, refetch}) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
-            Are you sure to delete this <span className="text-2xl text-red-500">({productName} )</span> order!
+            Are you sure to delete this <span className="text-2xl text-red-500">({name} )</span> order!
           </h3>
           <p className="py-4">
             You've been selected for a order to delete which will never get back;
