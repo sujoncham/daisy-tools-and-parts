@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
+import RequireAdmin from './components/Authentication/RequireAdmin';
 import RequireAuth from './components/Authentication/RequireAuth';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
@@ -14,12 +15,14 @@ import Contact from './components/Pages/Contact';
 import AddProducts from './components/Pages/Dashboard/AddProducts';
 import AddProfile from './components/Pages/Dashboard/AddProfile';
 import AllUsers from './components/Pages/Dashboard/AllUsers';
+import CheckoutForm from './components/Pages/Dashboard/CheckoutForm';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import Dashboard404 from './components/Pages/Dashboard/Dashboard404';
 import Message from './components/Pages/Dashboard/Message';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProducts from './components/Pages/Dashboard/MyProducts';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
+import Payment from './components/Pages/Dashboard/Payment';
 import ProfileEdit from './components/Pages/Dashboard/ProfileEdit';
 import ReviewList from './components/Pages/Dashboard/ReviewList';
 import Home from './components/Pages/Home';
@@ -52,14 +55,16 @@ function App() {
           <Dashboard></Dashboard>
           </RequireAuth>
         }>
-          <Route index element={<MyProducts></MyProducts>}></Route>
-          <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
+          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path='manageProduct' element={<MyProducts></MyProducts>}></Route>
           <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
           <Route path='reviewList' element={<ReviewList></ReviewList>}></Route>
           <Route path='addProducts' element={<AddProducts></AddProducts>}></Route>
+          <Route path='payment/:payId' element={<Payment></Payment>}></Route>
+          <Route path='checkoutForm' element={<CheckoutForm></CheckoutForm>}></Route>
           <Route path='addProfile' element={<AddProfile></AddProfile>}></Route>
           <Route path='profileEdit/:profileEdit' element={<ProfileEdit></ProfileEdit>}></Route>
-          <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='allUsers' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
           <Route path='message' element={<Message></Message>}></Route>
           <Route path='*' element={<Dashboard404></Dashboard404>}></Route>
         </Route>

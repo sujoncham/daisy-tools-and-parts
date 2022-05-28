@@ -1,38 +1,31 @@
-import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import auth from '../../Firebase/Firebase.init';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import DeletingConfirmModel from './DeletingConfirmModel';
+import RowOrder from './RowOrder';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
-    const [orders, setOrders] = useState([]);
-    const navigate = useNavigate();
+    const [deletingOrder, setDeletingOrder] = useState(null);
+
+  const {data : orders, isLoading, refetch} = useQuery('users', ()=>fetch(`http://localhost:5000/purchase?customer=${user?.email}`, {
+    method:'GET',
+    headers:{
+      authorization : `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  }).then((res) => res.json()));
+
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   
-    useEffect(() => {
-      fetch(`http://localhost:5000/purchase?customer=${user?.email}`, {
-        method:'GET',
-        headers:{
-          'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-        }
-      })
-        .then((res) => {
-          if(res.status === 401 || res.status === 403){
-            signOut(auth);
-            localStorage.removeItem('accessToken');
-            navigate('/');
-          }
-         return res.json();
-        })
-        .then((data) =>{ 
-          setOrders(data)
-        });
-    }, [user, navigate]);
-
-
+   
     return (
         <div>
       <h1 className="text-3xl mt-10">My Order products: {orders.length}</h1>
+      <div className="font-bold">
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -43,26 +36,24 @@ const MyOrders = () => {
               <th>Product name</th>
               <th>Price</th>
               <th>Quantity</th>
+              <th>Payment</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {
-                orders.map((order, index) => <tr index={index} key={order._id} order={order}>
-                    <th>{index + 1}</th>
-                    <td>{order.date} </td>
-                    <td>{order.customer}</td>
-                    <td>{order.productName}</td>
-                    <td>{order.price}</td>
-                    <td>{order.purchaseValue}</td>
-                    <td>
-                        <button className="btn btn-sm">Delete</button>
-                    </td>
-                  </tr>)
+                orders?.map((order, index) => <RowOrder 
+                index={index} 
+                key={order._id}
+                order={order}
+                setDeletingOrder={setDeletingOrder}
+                ></RowOrder>)
             }
           </tbody>
         </table>
       </div>
+      </div>
+      {deletingOrder && <DeletingConfirmModel refetch={refetch} deletingOrder={deletingOrder} setDeletingOrder={setDeletingOrder}></DeletingConfirmModel>}
     </div>
     );
 };

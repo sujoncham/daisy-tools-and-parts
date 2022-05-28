@@ -2,11 +2,13 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
+import useInbox from "../../../hooks/useInbox";
 import auth from "../../Firebase/Firebase.init";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
+  const [inboxs] = useInbox();
 
   return (
     <div>
@@ -28,17 +30,22 @@ const Dashboard = () => {
           <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
             {admin && (
               <li>
-                <Link to="/dashboard">Manage Products</Link>
+                <Link to="/dashboard/manageProduct">Manage Products</Link>
+              </li>
+            )}
+            {admin && <li>
+              <Link to="/dashboard/message">
+                  Inbox
+                  <div className="badge badge-secondary">{inboxs.length}</div>
+              </Link>
+            </li>}
+            {admin && (
+              <li>
+                <Link to="/dashboard/allUsers"> All Users</Link>
               </li>
             )}
             <li>
-              <Link to="/dashboard/message">
-                  Inbox
-                  <div class="badge badge-secondary">+99</div>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myOrders">My Orders</Link>
+              <Link to="/dashboard">My Orders</Link>
             </li>
             <li>
               <Link to="/dashboard/myProfile">My Profile</Link>
@@ -46,20 +53,11 @@ const Dashboard = () => {
             <li>
               <Link to="/dashboard/reviewList">Review List</Link>
             </li>
-            <li>
+            {admin && <li>
               <Link to="/dashboard/addProducts"> Add Products</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/addProfile"> Add Profile</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/profileEdit"> Edit Profile</Link>
-            </li>
-            {admin && (
-              <li>
-                <Link to="/dashboard/allUsers"> All Users</Link>
-              </li>
-            )}
+            </li>}
+           
+            
           </ul>
         </div>
       </div>
