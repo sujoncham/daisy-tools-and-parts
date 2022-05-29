@@ -115,29 +115,29 @@ const AddReview = () => {
             <div className='flex justify-start items-center mt-5 mb-5'>
                   <h1>Ratings : </h1>
             <div className='flex justify-start m-4'>
-            {[...Array(5)].map((star, i)=>{
-                const ratingValue = i + 1;
-                return <label key={i} star={star}>
-                    <input 
-                    type="radio"
-                    name='rating' 
-                    value={ratingValue}
-                    onClick={()=>setRating(ratingValue)} 
-                    />
-                    
-                    <FaStar size={25} i={i}
-                    color={ratingValue <= rating ? '#ffc107': '#e4e5e9'} 
-                    onClick={()=>setRating(null)}
-                    />
-                </label>
-            })}
+                {[...Array(5)].map((star, i)=>{
+                    const ratingValue = i + 1;
+                    return <label key={i} star={star}>
+                        <input 
+                        type="radio"
+                        name='rating' 
+                        value={ratingValue}
+                        onClick={()=>setRating(ratingValue)} 
+                        />
+                        
+                        <FaStar size={25} i={i}
+                        color={ratingValue <= rating ? '#ffc107': '#e4e5e9'} 
+                        onClick={()=>setRating(null)}
+                        />
+                    </label>
+                })}
             </div>
             
         </div>
 
 
             <div className="form-control mt-6 w-full max-w-xs">
-              <button type="submit" className="btn btn-primary">
+              <button disabled={!rating} type="submit" className="btn btn-primary">
                 Add Review
               </button>
             </div>

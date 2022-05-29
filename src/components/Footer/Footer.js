@@ -37,7 +37,7 @@ const Footer = () => {
                     <Link to='/blog' className="link link-hover">Blog</Link>
                     <Link to='/' className="link link-hover">New Arival</Link>
                 </div>
-                <div>
+                <div className='mt-3'>
                     <p>&copy;{year} <Link to='/' className='text-blue-500'>Daisy Tool and Parts, LLC.</Link> All Rights Reserved</p>
                 </div>
                 <div className='flex gap-5 mt-5'>

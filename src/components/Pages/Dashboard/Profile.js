@@ -12,7 +12,7 @@ const Profile = ({ profile }) => {
   return (
     <div className="w-full p-20">
      
-      <div className="grid grid-cols-1 lg:grid-cols-2 mb-14 justify-center items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 mb-14 justify-evently items-center">
         <img style={myStyle} src={img} alt="" />
         <div>
           <h1>{name}</h1>

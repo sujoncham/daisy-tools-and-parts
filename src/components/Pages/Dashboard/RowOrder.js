@@ -9,10 +9,10 @@ const RowOrder = ({ order, index, setDeletingOrder }) => {
       <td>{date} </td>
       <td>{customer}</td>
       <td>{name}</td>
-      <td>${price*purchaseValue}</td>
+      <td>${(price/100)*purchaseValue}</td>
       <td>{purchaseValue}</td>
       <td>
-      {(order.price && !order.paid) && <Link className="btn btn-primary" to={`/dashboard/payment/${order._id}`}>Pay</Link>}
+      {(order.price && !order.paid) && <Link className="btn btn-primary btn-sm" to={`/dashboard/payment/${order._id}`}>Pay</Link>}
         {(order.price && order.paid) && <>
           <p className="text-success">paid</p>
           <p className="text-success">({order.transactionId.slice(-4)})</p>
