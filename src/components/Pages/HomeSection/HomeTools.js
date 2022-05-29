@@ -34,7 +34,7 @@ const HomeTools = () => {
         ))}
       </div>
       <div className="justify-center mt-20 card card-compact bg-base-100 shadow-xl">
-        <button onClick={handlePurchasePage} className="btn btn-primary m-auto w-96 mb-10">Purchase</button>
+        <button onClick={handlePurchasePage} className="btn btn-primary m-auto w-96 mb-10">See more to purchase</button>
       </div>
     </div>
   );

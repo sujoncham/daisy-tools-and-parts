@@ -1,9 +1,9 @@
-# Getting Started with Create React App
+# Daisy Tools and Parts
 
 ## Requirement Links:
 
-- Client-side repo : (https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-sujoncham)
-- Server-side repo : (https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-sujoncham)
+- Client-side repo : (https://github.com/programming-hero-web-course1/manufacturer-website-client-side-sujoncham)
+- Server-side repo : (https://github.com/programming-hero-web-course1/manufacturer-website-server-side-sujoncham)
 - Website link : (https://warehouse-management-ser-f94b6.web.app)
 - StackOverFlow link : (https://stackoverflow.com/questions/72085284/how-can-i-extract-keys-and-values-from-a-nested-object-of-objects/72085664#72085664)
 
