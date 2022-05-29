@@ -2,8 +2,8 @@ import React from "react";
 
 const BusinessSummary = () => {
   return (
-    <div className="p-5">
-      <h1 className="text-3xl text-center font-bold">Business Summery</h1>
+    <div className="p-5 mt-20 mb-20">
+      <h1 className="text-3xl text-center text-blue-500 font-bold">Business Summery</h1>
       <div className="divider w-56 m-auto mt-5 mb-10">
           <div className="stat-figure text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
@@ -16,34 +16,28 @@ const BusinessSummary = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-14 place-items-center">
         <div className="card w-80 bg-base-100 shadow-xl border">
           <div className="card-body text-center">
-            <h2 className="text-2xl">Daily Sell</h2>
+            <h2 className="text-2xl  text-blue-500 font-bold">Monthly Sell</h2>
             <p>31K</p>
-            <p className="text-purple-400">From January 1st to February 1st</p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-primary">see more</button>
-            </div>
+            <p className="text-purple-500 font-bold">From January 1st to February 1st</p>
+         
           </div>
         </div>
 
         <div className="card w-80 bg-base-100 shadow-xl border">
           <div className="card-body text-center">
-            <h2 className="text-2xl">Clients</h2>
+            <h2 className="text-2xl  text-blue-500 font-bold">Happy Clients</h2>
             <p className="text-xl">4,200k</p>
-            <p className="text-purple-400">↗︎ 40 (2%)</p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-primary">see more</button>
-            </div>
+            <p className="text-purple-500 font-bold">↗︎ 40 (2%)</p>
+          
           </div>
         </div>
 
         <div className="card w-80 bg-base-100 shadow-xl border">
         <div className="card-body text-center">
-            <h2 className="text-2xl text-red-300 font-bold">New Register</h2>
+            <h2 className="text-2xl text-blue-500 font-bold">New Register</h2>
             <p>1200k</p>
-            <p className="text-purple-400">↗︎ 40 (2%)</p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-primary">see more</button>
-            </div>
+            <p className="text-purple-500 font-bold">↗︎ 40 (2%)</p>
+          
           </div>
         </div>
 

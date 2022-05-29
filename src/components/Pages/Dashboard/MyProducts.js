@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import RowProduct from "./RowProduct";
 
 const MyProducts = () => {
-  const [tools, setTools] = useState([]);
-    
-  
-    useEffect(() => {
-      fetch('http://localhost:5000/products')
-        .then((res) => res.json())
-        .then((data) => {
-          setTools(data)
-        });
-    }, []);
+  const { data: tools, isLoading, refetch } = useQuery('tools', () =>
+    fetch('http://localhost:5000/products').then((res) => res.json()));
 
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   return (
     <div>
-      <h1 className="text-3xl mt-10">Manage Products</h1>
+      <h1 className="text-3xl mt-10">Manage Products : {tools.length}</h1>
       <div className="overflow-y-auto">
         <table className="table w-full">
           <thead>
@@ -30,18 +28,12 @@ const MyProducts = () => {
           </thead>
           <tbody>
             {
-                tools.map((tool, index) => <tr index={index} key={tool._id} tool={tool}>
-                    <th>{index + 1}</th>
-                    <td>
-                        <img style={{width:'50px'}} src={tool.img} alt="" />
-                    </td>
-                    <td>{tool.name}</td>
-                    <td>{tool.price}</td>
-                    <td>{tool.quantity}</td>
-                    <td>
-                        <button className="btn btn-sm">Delete</button>
-                    </td>
-                  </tr>)
+               tools?.map((tool, index) => <RowProduct 
+               index={index}
+                key={tool._id} 
+                tool={tool} 
+                refetch={refetch}
+                ></RowProduct>)
             }
           </tbody>
         </table>

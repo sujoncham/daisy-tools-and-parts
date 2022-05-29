@@ -18,8 +18,8 @@ const HomeTools = () => {
   }
 
   return (
-    <div className="mt-20 mb-20">
-      <h1 className="text-3xl text-center">Our Latest Products tools</h1>
+    <div className="mt-20 mb-42">
+      <h1 className="text-3xl text-center text-blue-500 uppercase font-bold mb-14">Our Latest Products tools</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
         {newTools.map((tool) => (
           <div key={tool._id} tool={tool} className="card w-96 bg-base-100 shadow-xl">

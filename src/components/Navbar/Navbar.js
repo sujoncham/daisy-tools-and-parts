@@ -2,6 +2,7 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo512.png';
 import auth from '../Firebase/Firebase.init';
 
 const Navbar = () => {
@@ -42,7 +43,7 @@ const Navbar = () => {
                     {myNavbar}
                 </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-3xl uppercase">daisyTools</Link>
+                <Link to='/' className="btn btn-ghost text-2xl text-blue-500 uppercase"> <img className='w-16' src={logo} alt="" /> daisyTools</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0"> {myNavbar}</ul>
