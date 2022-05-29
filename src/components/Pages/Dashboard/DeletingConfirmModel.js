@@ -7,7 +7,7 @@ const DeletingConfirmModel = ({deletingOrder, setDeletingOrder, refetch}) => {
 
     const orderDelete = () => {
        
-          fetch(`http://localhost:5000/purchase/${_id}`, {
+          fetch(`https://hidden-beyond-54066.herokuapp.com/purchase/${_id}`, {
           method: "DELETE",
           headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

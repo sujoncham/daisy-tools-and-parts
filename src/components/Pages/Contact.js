@@ -16,7 +16,7 @@ const Contact = () => {
             opinion,
           };
 
-          fetch("http://localhost:5000/inbox", {
+          fetch("https://hidden-beyond-54066.herokuapp.com/inbox", {
             method: "POST",
             headers: {
               "content-type": "application/json",

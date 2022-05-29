@@ -35,7 +35,7 @@ const AddReview = () => {
             rating:rating
           };
 
-          fetch("http://localhost:5000/reviews", {
+          fetch("https://hidden-beyond-54066.herokuapp.com/reviews", {
             method: "POST",
             headers: {
               "content-type": "application/json",

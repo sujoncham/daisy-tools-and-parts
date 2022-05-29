@@ -15,7 +15,7 @@ const PurchaseModal = () => {
   
 
   useEffect(()=>{
-    const url = `http://localhost:5000/products/${purchaseId}`;
+    const url = `https://hidden-beyond-54066.herokuapp.com/products/${purchaseId}`;
     fetch(url)
     .then(res =>res.json())
     .then(result => {
@@ -44,7 +44,7 @@ const PurchaseModal = () => {
     };
 
     // postdata
-    axios.post(`http://localhost:5000/purchase/`, purchaseData)
+    axios.post(`https://hidden-beyond-54066.herokuapp.com/purchase/`, purchaseData)
         .then(response => {
             toast("Purchase successfully");
             // setPurchase('');

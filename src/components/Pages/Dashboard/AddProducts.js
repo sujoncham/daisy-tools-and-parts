@@ -30,7 +30,7 @@ const AddProducts = () => {
             img: img,
           };
 
-          fetch("http://localhost:5000/products", {
+          fetch("https://hidden-beyond-54066.herokuapp.com/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

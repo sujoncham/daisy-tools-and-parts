@@ -10,7 +10,7 @@ const MyProfile = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myProfile?email=${user?.email}`, {
+        fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile?email=${user?.email}`, {
             method:'GET',
             headers:{
             authorization : `Bearer ${localStorage.getItem('accessToken')}`

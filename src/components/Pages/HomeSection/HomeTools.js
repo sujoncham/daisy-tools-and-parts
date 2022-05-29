@@ -8,7 +8,7 @@ const HomeTools = () => {
   const newTools = tools.slice(-6)
 
   useEffect(() => {
-    fetch("http://localhost:5000/products/")
+    fetch("https://hidden-beyond-54066.herokuapp.com/products/")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);

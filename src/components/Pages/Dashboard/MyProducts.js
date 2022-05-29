@@ -5,7 +5,7 @@ import RowProduct from "./RowProduct";
 
 const MyProducts = () => {
   const { data: tools, isLoading, refetch } = useQuery('tools', () =>
-    fetch('http://localhost:5000/products').then((res) => res.json()));
+    fetch('https://hidden-beyond-54066.herokuapp.com/products').then((res) => res.json()));
 
   if (isLoading) {
     return <LoadingSpinner></LoadingSpinner>;

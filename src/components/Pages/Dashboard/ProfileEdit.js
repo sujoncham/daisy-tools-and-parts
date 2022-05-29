@@ -13,7 +13,7 @@ const ProfileEdit = () => {
 
   const [profile, setProfile] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/myProfile/${profileEdit}`)
+    fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`)
       .then((res) => res.json())
       .then((data) => setProfile(data));
   }, [profileEdit]);
@@ -53,7 +53,7 @@ const ProfileEdit = () => {
             img: img,
           };
 
-          fetch(`http://localhost:5000/myProfile/${profileEdit}`, {
+          fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

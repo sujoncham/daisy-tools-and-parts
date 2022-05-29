@@ -4,7 +4,7 @@ const Message = () => {
   const [inboxs, setInboxs] = useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:5000/inbox/')
+    fetch('https://hidden-beyond-54066.herokuapp.com/inbox/')
     .then(res => res.json())
     .then(data => setInboxs(data));
   }, [])

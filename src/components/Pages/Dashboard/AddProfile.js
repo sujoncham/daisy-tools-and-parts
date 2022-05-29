@@ -44,7 +44,7 @@ const AddProfile = () => {
             img: img,
           };
 
-          fetch("http://localhost:5000/myProfile", {
+          fetch("https://hidden-beyond-54066.herokuapp.com/myProfile", {
             method: "POST",
             headers: {
               "content-type": "application/json",
