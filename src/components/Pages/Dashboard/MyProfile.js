@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
 import Profile from './Profile';
 
@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth);
     const [profiles, setProfiles] = useState([]);
     const navigate = useNavigate();
-    
+
     useEffect(()=>{
         fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile?email=${user?.email}`, {
             method:'GET',
@@ -28,15 +28,15 @@ const MyProfile = () => {
 
     return (
         <div className='mt-10'>
-             <div>
-             <h1 className='text-2xl border-b-2 w-80'>
+            <h1 className='text-2xl border-b-4'>
                 My Profile : 
                 <button onClick={() => handleEditForm(user?.email)} className="btn btn-sm m-3"> edit</button>
             </h1>
-             </div>
-            {
-                profiles.map(profile => <Profile key={profile._id} profile={profile}></Profile>)
-            }
+           
+                {
+                    profiles.map(profile => <Profile key={profile._id} profile={profile}></Profile>)
+                }
+            
         </div>
     );
 };

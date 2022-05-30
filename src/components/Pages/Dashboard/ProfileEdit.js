@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import auth from "../../Firebase/Firebase.init";
 
 const ProfileEdit = () => {
-  const { register, formState: { errors }, handleSubmit, reset,} = useForm();
     const [user] = useAuthState(auth);
   const { profileEdit } = useParams();
 
-  const [profile, setProfile] = useState({});
+  const { register, formState: { errors }, handleSubmit, reset,} = useForm();
 
+  const [profile, setProfile] = useState({});
   useEffect(() => {
     fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`)
       .then((res) => res.json())
@@ -34,7 +34,6 @@ const ProfileEdit = () => {
         if (result.success) {
           const img = result.data.url;
 
-          const name = data.name;
           const description = data.description;
           const phone = data.phone;
           const address = data.address;
@@ -43,15 +42,15 @@ const ProfileEdit = () => {
           const education = data.education;
 
           const product = {
+            name: user.displayName,
             email: user.email,
-            name,
             phone,
             description,
             address,
             experience,
             skills,
             education,
-            img,
+            img: img,
           };
 
           fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`, {
@@ -66,7 +65,7 @@ const ProfileEdit = () => {
             .then((inserted) => {
               console.log(inserted);
               if (inserted.insertedId) {
-                toast("Updated successfully");
+                toast("added successfully");
                 reset();
               }
             });
@@ -89,9 +88,10 @@ const ProfileEdit = () => {
                 </label>
                 <input
                   type="text"
-                  name="name"
+                  value={user?.displayName}
                   className="input input-bordered"
-                  placeholder="enter name"
+                  readOnly
+                  disabled
                 />
               </div>
               <div className="form-control max-w-xs">
