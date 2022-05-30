@@ -25,6 +25,7 @@ const AddProfile = () => {
         if (result.success) {
           const img = result.data.url;
 
+        const name = data.name;
         const description = data.description;
         const phone = data.phone;
         const address = data.address;
@@ -33,22 +34,22 @@ const AddProfile = () => {
         const education = data.education;
 
           const product = {
-            name: user.displayName,
             email: user.email,
+            name,
             phone,
             description,
             address,
             experience,
             skills,
             education,
-            img: img,
+            img,
           };
 
-          fetch("https://hidden-beyond-54066.herokuapp.com/myProfile", {
+          fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${user?.email}`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
-              // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+              authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(product),
           })
@@ -74,7 +75,7 @@ const AddProfile = () => {
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
-              <input type="text" value={user?.displayName} className="input input-bordered" readOnly disabled />
+              <input type="text" name='name' className="input input-bordered" placeholder='name' />
              
             </div>
             <div className="form-control max-w-xs">
