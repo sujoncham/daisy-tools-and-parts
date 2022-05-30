@@ -11,8 +11,7 @@ const PurchaseModal = () => {
   const [user] = useAuthState(auth);
   const [purchase, setPurchase] = useState({});
    const today = new Date();
-   const formatDate = today.toLocaleDateString("en-US")
-  
+   const formatDate = today.toLocaleDateString("en-US");
 
   useEffect(()=>{
     const url = `https://hidden-beyond-54066.herokuapp.com/products/${purchaseId}`;
@@ -22,7 +21,6 @@ const PurchaseModal = () => {
       setPurchase(result)
     });
 }, [purchaseId]);
-
 
 
   const handlePurchaseForm = (event) =>{
@@ -49,29 +47,24 @@ const PurchaseModal = () => {
             toast("Purchase successfully");
             // setPurchase('');
         })
-  
-
   }
 
     return (
         <div className="mt-20 mb-20">
-          
+          <h1 className="text-3xl font-bold text-center mb-12 text-blue-500">Give Your Information</h1>
           <div className="grid lg:grid-cols-2 gap-3 justify-items-center">
             <div className="w-full max-w-md mb-10">
-
               <img src={purchase.img} alt="" />
+              <h1 className="text-3xl font-bold uppercase">{purchase.name}</h1>
               <p>{purchase.description}</p>
-
             </div>
             <form onSubmit={handlePurchaseForm} >
               <div className="form-control w-96">
-               
                 <input type="text" value={formatDate} readOnly disabled />
                 <input type="email" value={user?.email || ''} readOnly disabled />
                 <input type="number" name="phone" placeholder="Phone" className="input input-bordered mb-3" autoComplete="off" />
                 <textarea type="text" name="address" className="textarea textarea-bordered mb-3" placeholder="address"></textarea>
               </div>
-
               <div className="form-control w-96">
               <label className="label">
                   <span className="label-text">Product name</span>
@@ -95,16 +88,12 @@ const PurchaseModal = () => {
                   className="input input-bordered"
                 />
                 </label>
-                
               </div>
-              
               <div className="justify-center mt-10">
                 <button className="btn">Purchase</button>
               </div>
             </form>
-
           </div>
-        
       </div>
     );
 };

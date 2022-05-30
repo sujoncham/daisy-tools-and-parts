@@ -53,7 +53,12 @@ const MyOrders = () => {
         </table>
       </div>
       </div>
-      {deletingOrder && <DeletingConfirmModel refetch={refetch} deletingOrder={deletingOrder} setDeletingOrder={setDeletingOrder}></DeletingConfirmModel>}
+      {
+      deletingOrder && <DeletingConfirmModel 
+      refetch={refetch} deletingOrder={deletingOrder} 
+      setDeletingOrder={setDeletingOrder}
+      ></DeletingConfirmModel>
+      }
     </div>
     );
 };
