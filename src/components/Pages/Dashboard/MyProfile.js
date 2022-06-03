@@ -29,7 +29,7 @@ const MyProfile = () => {
     return (
         <div className='mt-10'>
             <h1 className='text-2xl border-b-4'>
-                My Profile : 
+                View My Profile : 
                 <button onClick={() => handleEditForm(user?.email)} className="btn btn-sm m-3"> edit</button>
             </h1>
            
