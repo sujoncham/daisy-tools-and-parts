@@ -1,4 +1,3 @@
-import React from 'react';
 import team1 from '../../assets/team/team1.jpg';
 import team2 from '../../assets/team/team2.jpg';
 
@@ -55,7 +54,7 @@ const About = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                     <div class="card card-side bg-base-100 shadow-xl">
                         <div className='grid grid-cols-1 lg:grid-cols-2 '>
-                        <figure><img className='w-56 h-80' src={team1} alt="Movie" /></figure>
+                        <figure><img className='w-56 h-80 rounded-md' src={team1} alt="Movie" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">Tools Jone</h2>
                             <p>CEO, Administration</p>
@@ -68,7 +67,7 @@ const About = () => {
                     </div>
                     <div className="card card-side bg-base-100 shadow-xl">
                         <div className='grid grid-cols-1 lg:grid-cols-2 '>
-                                <figure><img className='w-56 h-80' src={team2} alt="Movie" /></figure>
+                                <figure><img className='w-56 h-80 rounded-md' src={team2} alt="Movie" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">Toos Smith</h2>
                                     <p>CEO, Sales and Marketing</p>
