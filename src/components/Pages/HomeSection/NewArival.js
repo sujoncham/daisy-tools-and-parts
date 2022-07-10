@@ -1,4 +1,3 @@
-import React from "react";
 import tools from '../../../assets/team/tools.jpg';
 
 const NewArival = () => {
@@ -6,7 +5,7 @@ const NewArival = () => {
     <div>
       <div
         className="hero min-h-screen"
-        style={{backgroundImage: `url(${tools})`, height:'auto',width:'100%'}} >
+        style={{backgroundImage: `url(${tools})`, height:'auto', width:'100%'}} >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">

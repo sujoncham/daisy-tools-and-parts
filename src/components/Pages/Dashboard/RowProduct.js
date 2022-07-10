@@ -32,7 +32,7 @@ const RowProduct = ({tool, refetch, index}) => {
                 <img style={{width:'50px'}} src={img} alt="" />
             </td>
             <td>{name}</td>
-            <td>{price}</td>
+            <td>${price}</td>
             <td>{quantity}</td>
             <td>
                 <button onClick={()=>handleDeleteForm(_id)} className="btn btn-sm">Delete</button>

@@ -10,7 +10,7 @@ const About = () => {
                 <h1 className='text-2xl font-bold'>Our Missioni</h1>
                 <div className="divider w-56 mt-5 mb-5">
                 <div className="stat-figure text-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
 
                         </path>
@@ -52,7 +52,7 @@ const About = () => {
                     </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
-                    <div class="card card-side bg-base-100 shadow-xl">
+                    <div className="card card-side bg-base-100 shadow-xl">
                         <div className='grid grid-cols-1 lg:grid-cols-2 '>
                         <figure><img className='w-56 h-80 rounded-md' src={team1} alt="Movie" /></figure>
                         <div className="card-body">
