@@ -54,7 +54,7 @@ const ProfileEdit = () => {
           };
 
           fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
