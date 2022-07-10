@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
-import Profile from './Profile';
+
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
-    const [profiles, setProfiles] = useState([]);
+    const [profile, setProfile] = useState({});
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -18,25 +18,26 @@ const MyProfile = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            setProfiles(data);
+            setProfile(data);
         })
     }, [user]);
 
-    const handleEditForm = () => {
-        navigate(`/dashboard/profileEdit/${user?.email}`);
+    const handleEditForm = (id) => {
+        navigate(`/dashboard/profileEdit/${id}`);
       };
 
     return (
         <div className='mt-10'>
             <h1 className='text-2xl border-b-4'>
                 View My Profile : 
-                <button onClick={() => handleEditForm(user?.email)} className="btn btn-sm m-3"> edit</button>
+                <button onClick={() => handleEditForm(profile._id)} className="btn btn-sm m-3"> edit</button>
             </h1>
+
+            <div>
+                <h1>{profile.name}</h1>
+            </div>
            
-                {
-                    profiles.map(profile => <Profile key={profile._id} profile={profile}></Profile>)
-                }
-            
+               
         </div>
     );
 };
