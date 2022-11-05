@@ -1,28 +1,33 @@
 import React from 'react';
 import { FaFacebook, FaGooglePlusG, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo512.png';
 
 const Footer = () => {
     const dateYear = new Date();
     const year = dateYear.getFullYear();
     return (
         <footer className="p-10 bg-neutral text-neutral-content">
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2 border-b-2 pb-5'>
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 border-b-2 pb-5'>
                 <div className='text-center grid m-auto'>
+                    <img className='w-28' src={logo} alt='' />
+                    <span className="text-white text-2xl font-bold">Daisy Tools Parts</span> 
+                </div> 
+                <div className='text-start grid m-auto'>
                     <span className="footer-title text-yellow-500 font-bold">Services</span> 
                     <Link to='/branding' className="link link-hover">Branding</Link>
                     <Link to='/design' className="link link-hover">Design</Link>
                     <Link to='/marketing' className="link link-hover">Marketing</Link>
                     <Link to='/adverticement' className="link link-hover">Advertisement</Link>
                 </div> 
-                <div className='text-center grid m-auto'>
+                <div className='text-start grid m-auto'>
                     <span className="footer-title text-yellow-500 font-bold">Company</span> 
                     <Link to='/about' className="link link-hover">About us</Link>
                     <Link to='/contact' className="link link-hover">Contact</Link>
                     <Link to='/blog' className="link link-hover">Blog</Link>
                     <Link to='/' className="link link-hover">New Arival</Link>
                 </div> 
-                <div className='text-center grid m-auto'>
+                <div className='text-start grid m-auto'>
                     <span className="footer-title text-yellow-500 font-bold">Legal</span> 
                     <Link to='/terms' className="link link-hover">Terms of use</Link>
                     <Link to='/privacy' className="link link-hover">Privacy policy</Link>

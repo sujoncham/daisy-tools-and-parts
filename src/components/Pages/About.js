@@ -3,8 +3,8 @@ import team2 from '../../assets/team/team2.jpg';
 
 const About = () => {
     return (
-        <div className='p-10'>
-            <h1 className='text-3xl text-primary mt-8 mb-20'>About Us</h1>
+        <div className='container mx-auto p-10'>
+            <h1 className='text-3xl font-bold text-primary mt-8 mb-20'>About Us</h1>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
             <div>
                 <h1 className='text-2xl font-bold'>Our Missioni</h1>

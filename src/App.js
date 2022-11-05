@@ -27,7 +27,7 @@ import ProfileEdit from './components/Pages/Dashboard/ProfileEdit';
 import ReviewList from './components/Pages/Dashboard/ReviewList';
 import Home from './components/Pages/Home';
 import Page404 from './components/Pages/Page404';
-import Purchase from './components/Pages/Purchase';
+import Products from './components/Pages/Products';
 import PurchaseModal from './components/Pages/PurchaseModal/PurchaseModal';
 
 
@@ -39,7 +39,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
-        <Route path='/purchase' element={<Purchase></Purchase>}></Route>
+        <Route path='/products' element={<Products></Products>}></Route>
         <Route path='/purchase/:purchaseId' element={<RequireAuth><PurchaseModal></PurchaseModal></RequireAuth>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
