@@ -1,14 +1,13 @@
 import React from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import errorImage from '../../../assets/images/error.png';
 
 const Dashboard404 = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
 
+    
     const handleDashboard = () =>{
-      navigate(from, { replace: true }); 
+      navigate('/dashboard'); 
     }
 
     return (

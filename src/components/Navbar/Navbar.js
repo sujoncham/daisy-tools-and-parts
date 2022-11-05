@@ -36,21 +36,26 @@ const Navbar = () => {
                     {myNavbar}
                 </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-2xl text-blue-500 uppercase"> <img className='w-16' src={logo} alt="" /> daisyTools</Link>
+                <Link to='/' className="btn btn-ghost text-2xl text-blue-500 uppercase"> 
+                <img className='w-16' src={logo} alt="" /> 
+                <span className='hidden lg:flex'>daisyTools</span>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0"> {myNavbar}</ul>
             </div>
-            <div className="navbar-end">
-            { user && <div className='flex justify-end'>
-                <p className='text-green-500 p-2'>{user?.displayName?.slice(0, 6)}</p> <img className='w-12 rounded-full' src="https://i.ibb.co/k9T3tDW/lash.jpg" alt='' />
-            </div> }
-            { user ? <button onClick={logoutUser}>Signout</button> : <Link to="/login">Login</Link>}
             <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden" > 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
             </label>
+
+            <div className="navbar-end">
+            { user && <div className='flex justify-end'>
+                <p className='text-green-500 p-2'>{user?.displayName?.slice(0, 6)}</p> <img className='w-12 rounded-full' src="https://i.ibb.co/k9T3tDW/lash.jpg" alt='' />
+            </div> }
+            { user ? <button onClick={logoutUser}>Signout</button> : <Link to="/login">Login</Link>}
+            
             </div>
             </div>
     );

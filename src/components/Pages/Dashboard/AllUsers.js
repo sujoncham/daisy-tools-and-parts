@@ -5,7 +5,7 @@ import UserRow from './UserRow';
 
 const AllUsers = () => {
    
-    const { data:allUsers, isLoading, refetch} = useQuery('users', ()=>fetch('https://hidden-beyond-54066.herokuapp.com/users', {
+    const { data:allUsers, isLoading, refetch} = useQuery('users', ()=>fetch('https://daisy-tools-parts.onrender.com/users', {
         method: 'GET',
         headers:{
             authorization : `Bearer ${localStorage.getItem('accessToken')}`

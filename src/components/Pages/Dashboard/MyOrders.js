@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [deletingOrder, setDeletingOrder] = useState(null);
 
-  const {data : orders, isLoading, refetch} = useQuery('users', ()=>fetch(`https://hidden-beyond-54066.herokuapp.com/purchase?customer=${user?.email}`, {
+  const {data : purchases, isLoading, refetch} = useQuery(['purchase'], ()=>fetch(`https://daisy-tools-parts.onrender.com/purchase/${user?.email}`, {
     method:'GET',
     headers:{
       authorization : `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,7 @@ const MyOrders = () => {
    
     return (
         <div>
-      <h1 className="text-3xl mt-10">My Order products: {orders.length}</h1>
+      <h1 className="text-3xl mt-10">My Order products: {purchases?.length}</h1>
       <div className="font-bold">
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -42,7 +42,7 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {
-                orders?.map((order, index) => <RowOrder 
+                purchases?.map((order, index) => <RowOrder 
                 index={index} 
                 key={order._id}
                 order={order}

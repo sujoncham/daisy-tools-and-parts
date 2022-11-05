@@ -8,7 +8,7 @@ const RowProduct = ({tool, refetch, index}) => {
     const handleDeleteForm = (id) => {
         const confirmDelete = window.confirm('Are you want to delete this doctor?');
         if(confirmDelete){
-          fetch(`https://hidden-beyond-54066.herokuapp.com/products/${id}`, {
+          fetch(`https://daisy-tools-parts.onrender.com/products/${id}`, {
           method: "DELETE",
           headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

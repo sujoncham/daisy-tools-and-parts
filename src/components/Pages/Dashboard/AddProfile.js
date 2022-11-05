@@ -44,7 +44,7 @@ const AddProfile = () => {
             img: img,
           };
 
-          fetch("https://hidden-beyond-54066.herokuapp.com/myProfile", {
+          fetch("https://daisy-tools-parts.onrender.com/myProfile", {
             method: "POST",
             headers: {
               "content-type": "application/json",

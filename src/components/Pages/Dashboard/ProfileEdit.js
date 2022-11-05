@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import auth from "../../Firebase/Firebase.init";
 
 const ProfileEdit = () => {
-    const [user] = useAuthState(auth);
   const { profileEdit } = useParams();
+  const navigate = useNavigate();
 
-  const { register, formState: { errors }, handleSubmit, reset,} = useForm();
+  const { register, formState: { errors }, handleSubmit} = useForm();
 
   const [profile, setProfile] = useState({});
+  
   useEffect(() => {
-    fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`)
+    fetch(`https://daisy-tools-parts.onrender.com/myProfile?profile=${profileEdit}`)
       .then((res) => res.json())
       .then((data) => setProfile(data));
   }, [profileEdit]);
 
-  const imageStoreKey = "0a88ddefc27d62bd7063e3b8adb8b307";
+  const imageStoreKey = "a899e6af093c7dcba331d3bcc7b87039";
 
   const onSubmit = async (data) => {
     const image = data.image[0];
@@ -34,6 +33,9 @@ const ProfileEdit = () => {
         if (result.success) {
           const img = result.data.url;
 
+          const fname = data.fullName;
+          const username = data.username;
+          const email = data.email;
           const description = data.description;
           const phone = data.phone;
           const address = data.address;
@@ -42,8 +44,9 @@ const ProfileEdit = () => {
           const education = data.education;
 
           const product = {
-            name: user.displayName,
-            email: user.email,
+            username,
+            email,
+            fname,
             phone,
             description,
             address,
@@ -53,11 +56,11 @@ const ProfileEdit = () => {
             img: img,
           };
 
-          fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile/${profileEdit}`, {
-            method: "PATCH",
+          fetch(`https://daisy-tools-parts.onrender.com/myProfile`, {
+            method: "PUT",
             headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              "content-type" : "application/json",
+              authorization : `Bearer ${localStorage.getItem("accessToken")}`,
             },
             body: JSON.stringify(product),
           })
@@ -66,7 +69,7 @@ const ProfileEdit = () => {
               console.log(inserted);
               if (inserted.insertedId) {
                 toast("added successfully");
-                reset();
+                navigate('dashboard/profile');
               }
             });
         }
@@ -84,14 +87,24 @@ const ProfileEdit = () => {
             <div className="flex-auto w-64">
               <div className="form-control max-w-xs">
                 <label className="label">
+                  <span className="label-text">Username</span>
+                </label>
+                <input
+                  type="text"
+                  className="input input-bordered"
+                  name='username'
+                />
+              </div>
+
+              <div className="form-control max-w-xs">
+                <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
-                  value={user?.displayName}
+                  name="fullName"
                   className="input input-bordered"
-                  readOnly
-                  disabled
+                  placeholder="enter full name"
                 />
               </div>
               <div className="form-control max-w-xs">
@@ -99,11 +112,9 @@ const ProfileEdit = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
-                  value={user?.email}
+                  type="email"
                   className="input input-bordered"
-                  readOnly
-                  disabled
+                  name='email'
                 />
               </div>
               <div className="form-control max-w-xs">
@@ -119,7 +130,6 @@ const ProfileEdit = () => {
                   })}
                   type="number"
                   name="phone"
-                  value={profile.phone}
                   className="input input-bordered"
                   autoComplete="off"
                 />

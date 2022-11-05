@@ -9,7 +9,7 @@ const Purchase = () => {
   
     const navigate = useNavigate()
 
-    const {data:tools, isLoading} = useQuery('tools', ()=>fetch('https://hidden-beyond-54066.herokuapp.com/products').then(res=>res.json()));
+    const {data:tools, isLoading} = useQuery('tools', ()=>fetch('https://daisy-tools-parts.onrender.com/products').then(res=>res.json()));
     if(isLoading){
         return <LoadingSpinner></LoadingSpinner>
     }

@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { useProfile } from '../../../hooks/useProfile';
 import auth from '../../Firebase/Firebase.init';
 
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
-    const [profile, setProfile] = useState({});
+    const [profile] = useProfile(auth);
     const navigate = useNavigate();
+    console.log(profile);
 
-    useEffect(()=>{
-        fetch(`https://hidden-beyond-54066.herokuapp.com/myProfile?email=${user?.email}`, {
-            method:'GET',
-            headers:{
-            authorization : `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-        .then(res => res.json())
-        .then(data =>{
-            setProfile(data);
-        })
-    }, [user]);
+ 
 
     const handleEditForm = (id) => {
         navigate(`/dashboard/profileEdit/${id}`);
@@ -34,7 +25,17 @@ const MyProfile = () => {
             </h1>
 
             <div>
-                <h1>{profile.name}</h1>
+                <img src={profile.img} alt="" />
+                <h1>{user.displayName}</h1>
+                <h1>{user.email}</h1>
+                <h1>Full Name: {profile.fname}</h1>
+                <h1>Phone Number: {profile.phone}</h1>
+                <h1>Address: {profile.address}</h1>
+                <h1>About Me: {profile.description}</h1>
+                <h1>Qualification: {profile.education}</h1>
+                <h1>Skills: {profile.skills}</h1>
+                <h1>Experience: {profile.experience}</h1>
+           
             </div>
            
                

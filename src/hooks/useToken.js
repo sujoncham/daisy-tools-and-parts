@@ -7,7 +7,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const currentEmail = {email: email};
         if(email){
-            fetch(`https://hidden-beyond-54066.herokuapp.com/users/${email}`, {
+            fetch(`https://daisy-tools-parts.onrender.com/users/${email}`, {
             method: 'PUT', 
             headers:{
                 'content-type' : 'application/json'

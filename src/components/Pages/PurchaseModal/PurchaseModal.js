@@ -14,13 +14,26 @@ const PurchaseModal = () => {
    const formatDate = today.toLocaleDateString("en-US");
 
   useEffect(()=>{
-    const url = `https://hidden-beyond-54066.herokuapp.com/products/${purchaseId}`;
+    const url = `https://daisy-tools-parts.onrender.com/products/${purchaseId}`;
     fetch(url)
     .then(res =>res.json())
     .then(result => {
       setPurchase(result)
     });
 }, [purchaseId]);
+
+
+
+const handleQuantity = (event) =>{
+  const {quantity, ...rest} = purchase; 
+  const newQuantity = event.target.value;
+  const newData = {quantity:newQuantity, ...rest};
+
+  setPurchase(newData);
+}
+
+
+
 
 
   const handlePurchaseForm = (event) =>{
@@ -42,7 +55,7 @@ const PurchaseModal = () => {
     };
 
     // postdata
-    axios.post(`https://hidden-beyond-54066.herokuapp.com/purchase/`, purchaseData)
+    axios.post(`https://daisy-tools-parts.onrender.com/purchase/`, purchaseData)
         .then(response => {
             toast("Purchase successfully");
             // setPurchase('');
@@ -57,6 +70,11 @@ const PurchaseModal = () => {
               <img src={purchase.img} alt="" />
               <h1 className="text-3xl font-bold uppercase">{purchase.name}</h1>
               <p>{purchase.description}</p>
+              <div>
+                  
+                    <input type="number" onChange={handleQuantity} value={purchase.quantity} className='border p-2' />
+                  
+              </div>
             </div>
             <form onSubmit={handlePurchaseForm} >
               <div className="form-control w-96">
@@ -72,7 +90,7 @@ const PurchaseModal = () => {
                 </label>
               <label className="label">
                   <span className="label-text">Available Quantity</span>
-                  <input type="number" value={purchase.quantity || ''} readOnly disabled />
+                  <input type="number" value={purchase.quantity && purchase.quantity - purchase.quantity} readOnly disabled />
                 </label>
               
               <label className="label">
@@ -90,7 +108,7 @@ const PurchaseModal = () => {
                 </label>
               </div>
               <div className="justify-center mt-10">
-                <button className="btn">Purchase</button>
+                <button type="submit" className="btn">Purchase</button>
               </div>
             </form>
           </div>

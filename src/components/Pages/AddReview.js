@@ -35,7 +35,7 @@ const AddReview = () => {
             rating:rating
           };
 
-          fetch("https://hidden-beyond-54066.herokuapp.com/reviews", {
+          fetch("https://daisy-tools-parts.onrender.com/reviews", {
             method: "POST",
             headers: {
               "content-type": "application/json",

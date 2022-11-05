@@ -4,8 +4,8 @@ import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import RowProduct from "./RowProduct";
 
 const MyProducts = () => {
-  const { data: tools, isLoading, refetch } = useQuery('tools', () =>
-    fetch('https://hidden-beyond-54066.herokuapp.com/products').then((res) => res.json()));
+  const { data: tools, isLoading, refetch } = useQuery(['tools'], () =>
+    fetch('https://daisy-tools-parts.onrender.com/products').then((res) => res.json()));
 
   if (isLoading) {
     return <LoadingSpinner></LoadingSpinner>;

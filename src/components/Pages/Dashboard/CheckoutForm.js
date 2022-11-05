@@ -11,9 +11,10 @@ const CheckoutForm = ({purchase}) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('');
   const { _id, price, customer, customerName} = purchase;
+  console.log(processing)
 
   useEffect(()=>{
-    fetch('https://hidden-beyond-54066.herokuapp.com/create-payment-intent', {
+    fetch('https://daisy-tools-parts.onrender.com/create-payment-intent', {
       method: 'POST',
        headers:{
          'content-type': 'application/json',
@@ -77,7 +78,7 @@ const CheckoutForm = ({purchase}) => {
         }
         
         
-        fetch(`https://hidden-beyond-54066.herokuapp.com/purchase/${_id}`, {
+        fetch(`https://daisy-tools-parts.onrender.com/purchase/${_id}`, {
           method: 'PATCH',
           headers:{
             'content-type': 'application/json',

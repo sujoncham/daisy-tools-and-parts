@@ -14,7 +14,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { payId } = useParams();
 
-  const url = `https://hidden-beyond-54066.herokuapp.com/purchase/${payId}`;
+  const url = `https://daisy-tools-parts.onrender.com/purchase/${payId}`;
   const { data: purchase, isLoading } = useQuery(["purchase", payId], () =>
     fetch(url, {
         method:'GET',

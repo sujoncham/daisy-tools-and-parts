@@ -31,9 +31,6 @@ import Purchase from './components/Pages/Purchase';
 import PurchaseModal from './components/Pages/PurchaseModal/PurchaseModal';
 
 
-
-
-
 function App() {
   return (
     <div className="App">
@@ -57,7 +54,7 @@ function App() {
         }>
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='manageProduct' element={<MyProducts></MyProducts>}></Route>
-          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='myProfile/:id' element={<MyProfile></MyProfile>}></Route>
           <Route path='reviewList' element={<ReviewList></ReviewList>}></Route>
           <Route path='addProducts' element={<AddProducts></AddProducts>}></Route>
           <Route path='payment/:payId' element={<Payment></Payment>}></Route>

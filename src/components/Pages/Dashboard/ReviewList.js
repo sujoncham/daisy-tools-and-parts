@@ -4,7 +4,7 @@ const ReviewList = () => {
 
     const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://hidden-beyond-54066.herokuapp.com/reviews")
+    fetch("https://daisy-tools-parts.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

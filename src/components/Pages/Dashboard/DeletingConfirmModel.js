@@ -7,7 +7,7 @@ const DeletingConfirmModel = ({deletingOrder, setDeletingOrder, refetch}) => {
 
     const orderDelete = () => {
        
-          fetch(`https://hidden-beyond-54066.herokuapp.com/purchase/${_id}`, {
+          fetch(`https://daisy-tools-parts.onrender.com/purchase/${_id}`, {
           method: "DELETE",
           headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
